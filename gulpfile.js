@@ -1,3 +1,5 @@
+var browserSync = require('browser-sync');
+
 // 'gulp' means the folder in the node_modules
 var gulp = require('gulp');
 

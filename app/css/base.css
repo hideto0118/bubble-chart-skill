@@ -41,19 +41,45 @@ circle {
   -moz-transform-origin: 50% 50%;
   transform-origin: 50% 50%; }
 
-.text {
-  font-family: 'Oswald', sans-serif;
-  font-size: 2rem;
+.btnAndText {
+  margin-bottom: 1rem;
   position: absolute;
   bottom: 0%;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%; }
+
+.separate,
+.combine {
+  outline: none;
+  margin: 1rem;
+  display: inline-block;
+  font-family: 'Oswald', sans-serif;
+  border: 1px solid #000;
+  background: #fff;
+  font-size: 1.3rem;
+  transition: color 0.3s ease, background 0.3s ease; }
+  .separate:hover,
+  .combine:hover {
+    background: #000;
+    color: #fff; }
+
+.text {
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+  font-size: 2rem;
   text-shadow: 1px 1px rgba(238, 238, 238, 0.5); }
 
-@media only screen and (max-device-width: 600px) and (orientation: portrait) {
+/*@media only screen and (max-device-width: 600px) and (orientation: portrait) {
   h1 {
     font-size: 5.5rem;
-    top: 5vh; }
+    top: 5vh;
+  }
   .text {
     font-size: 4rem;
-    bottom: 10vh; } }
+    bottom: 10vh;
+  }
+}*/

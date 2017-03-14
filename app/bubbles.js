@@ -3,8 +3,8 @@
   var height = window.innerHeight;
   var width = window.innerWidth;
 
-  var centerY = window.innerHeight / 2;
-  var centerX= window.innerWidth / 2;
+  // var centerY = window.innerHeight / 2;
+  // var centerX= window.innerWidth / 2;
 
   function responsivefy(svg) {
     // get container + svg aspect ratio
@@ -51,12 +51,28 @@
   //STEP ONE: get them to the middle
   //STEP TWO: don't have them collide
 
-  var simulation = d3.forceSimulation()
-    .force("x", d3.forceX(width / 2).strength(0.05))
-    .force("y", d3.forceY(height / 2).strength(0.05))
-    .force("collide", d3.forceCollide(function(d) {
+  var forceXSeparate = d3.forceX(function(d) {
+      if(d.category === 'front'){
+        return width / 2 + 450;
+      }else if(d.category === 'back'){
+        return width / 2 - 450;
+      }else{
+        return width / 2;
+      }
+    }).strength(0.052);
+
+  var forceXCombine = d3.forceX(width / 2).strength(0.052);
+
+  var forceY = d3.forceY(height / 2).strength(0.052);
+
+  var forceCollide = d3.forceCollide(function(d) {
       return radiusScale(d.parcent) + 1;
-    }))
+    })
+
+  var simulation = d3.forceSimulation()
+    .force("x", forceXCombine)
+    .force("y", forceY)
+    .force("collide", forceCollide)
 
   d3.queue()
     .defer(d3.csv, "webskills.csv")
@@ -142,8 +158,19 @@
         })
       })
 
-      // window.onload = function(){
-      //  console.log("leaded!");
+      d3.select("#js-separate").on('click', function(){
+        simulation
+          .force("x", forceXSeparate)
+          .alphaTarget(0.4)
+          .restart()
+      })
+
+      d3.select("#js-combine").on('click', function(){
+        simulation
+          .force("x", forceXCombine)
+          .alphaTarget(0.2)
+          .restart()
+      })
 
       simulation.nodes(datapoints)
           .on('tick', ticked)
