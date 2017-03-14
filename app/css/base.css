@@ -69,17 +69,21 @@ circle {
 
 .text {
   margin: 0;
+  margin-top: -0.5rem;
   font-family: 'Oswald', sans-serif;
   font-size: 2rem;
   text-shadow: 1px 1px rgba(238, 238, 238, 0.5); }
 
-/*@media only screen and (max-device-width: 600px) and (orientation: portrait) {
+@media only screen and (max-device-width: 600px) and (orientation: portrait) {
   h1 {
     font-size: 5.5rem;
-    top: 5vh;
-  }
-  .text {
-    font-size: 4rem;
+    top: 5vh; }
+  .btnAndText {
     bottom: 10vh;
-  }
-}*/
+    width: 90%; }
+  .separate,
+  .combine {
+    padding: 1rem;
+    font-size: 2.6rem; }
+  .text {
+    font-size: 4rem; } }

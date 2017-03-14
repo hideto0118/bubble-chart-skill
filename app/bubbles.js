@@ -53,9 +53,9 @@
 
   var forceXSeparate = d3.forceX(function(d) {
       if(d.category === 'front'){
-        return width / 2 + 450;
+        return (width / 2) + (width / 3);
       }else if(d.category === 'back'){
-        return width / 2 - 450;
+        return (width / 2) - (width / 3);
       }else{
         return width / 2;
       }
@@ -168,7 +168,7 @@
       d3.select("#js-combine").on('click', function(){
         simulation
           .force("x", forceXCombine)
-          .alphaTarget(0.2)
+          .alphaTarget(0.05)
           .restart()
       })
 
